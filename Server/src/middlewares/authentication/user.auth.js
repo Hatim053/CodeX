@@ -14,7 +14,10 @@ async function authenticateUser(req , res , next) {
     const tokenId = authHeader.split('Bearer ')[1];
     try {
         const decodedToken = await admin.auth().verifyIdToken(tokenId);
-        req.user = decoded;
+        console.log(decodedToken);
+        req.user = decodedToken;
+
+        // fetch user from db and add into res req object if needed because in the payment controller it is used
         next();
     } catch (error) {
         return res

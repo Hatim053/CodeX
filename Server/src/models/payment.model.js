@@ -1,9 +1,14 @@
 import mongoose from 'mongoose';
+import { type } from 'os';
 
 const paymentSchema = new mongoose.Schema({
     transaction_id : { 
         type : String,
         required : true,
+    },
+    studentId : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Student',
     },
     amount : {
         type : Number,
@@ -12,11 +17,17 @@ const paymentSchema = new mongoose.Schema({
     status : {
         type : String,
         required : true,
-        enum : ['Sucess' , 'Failed' , 'Pending'],
+        enum : ['success' , 'failed' , 'pending'],
     },
-    payment_for : {
+    payment_for : [
+    {
      type : mongoose.Schema.Types.ObjectId,
      ref : 'Course',   
+    }
+    ],
+    transactionDate : {
+        type : String,
+        required : true,
     }
 } , { timestamps : true });
 

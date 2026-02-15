@@ -10,6 +10,19 @@ const instructorSchema = new mongoose.Schema({
       type : String,
       required : true,
     },
+    contact : {
+        type : Number,
+        required : true,
+    },
+    razorpayContactId : {
+        type : String,
+    },
+    razorpayFundAccountId : {
+        type : String,
+    },
+    accountNumber : {
+        type : Number,
+    },
     courses : [
         {
             type : mongoose.Schema.Types.ObjectId,
@@ -18,6 +31,11 @@ const instructorSchema = new mongoose.Schema({
     ],
     about : {
         type : String,
+        required : true,
+    },
+    wallet : {
+        type : Number,
+        default : 0,
     }
 } , { timestamps : true });
 

@@ -28,6 +28,10 @@ const courseSchema = new mongoose.Schema({
     },
     description : {
         type : String,
+    },
+    sales : {
+        type : Number,
+        default : 0,
     }
 
 } , { timestamps : true });
